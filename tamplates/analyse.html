@@ -4,14 +4,13 @@
     
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
    
     <title>Text Utils</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Text Utils</a>
+        <a class="navbar-brand" href="/">Text Utils</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,12 +19,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
-              </li>
           </ul>
         </div>
         <form class="form-inline">
@@ -41,16 +34,34 @@
       </div>
       
       <div class="container">
-        <form action="/analyse" method="post"> {%csrf_token%}
-           
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1"><h3><pre>your analysed text-{{ purpose }} and total characters are {{chars}}</pre></h3></label>
-              <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="10">{{analysed_text}}</textarea>
-            </div>
-            <a class="nav-link" href="/"><button type="button" class="btn btn-outline-primary">Back</button></a> 
-    </form>
+        <div class="form-group">
+          <label for="analysedtext"><h3><pre>your analysed text-{{ purpose }} and total characters are {{chars}}</pre></h3></label>
+          <textarea class="form-control" name="text" id="analysedtext" rows="10">{{analysed_text}}</textarea>
+        </div>
+        <div style="display: flex;">
+          <button class="btn btn-outline-success mr-4" onclick="copytext()">Copy to Clipboard</button>
+          <button type="button" class="btn btn-outline-primary"><a class="nav-link" href="/">Back</a></button>
+        </div>
     </div>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.0.js" integrity="sha256-TFWSuDJt6kS+huV+vVlyV1jM3dwGdeNWqezhTxXB/X8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<script type="text/javascript">
+  function copytext() {
+  // Get the text field
+  var copyText = document.getElementById("analysedtext");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  console.log("Copied the text: " + copyText.value);
+}
+</script>
