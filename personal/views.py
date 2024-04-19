@@ -1,6 +1,6 @@
-from ssl import Purpose
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from personal.models import ContactUs
 
 def index(request):
     return render(request,'index.html')
@@ -86,3 +86,17 @@ def analyse(request):
     #     return HttpResponse("Error")
 
     return render(request,'analyse.html',params)
+
+def contact_us(request):
+    if request.method == 'POST':
+        print("INNNNNNNN",request.POST)
+        full_name = request.POST.get("full_name")
+        print("full_name", full_name)
+        email = request.POST.get("email")
+        print("email", email)
+
+        ContactUs.objects.update_or_create(full_name=full_name, email=email)
+
+        return redirect('/')
+
+    return render(request, 'contact_us.html')

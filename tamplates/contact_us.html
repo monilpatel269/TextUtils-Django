@@ -36,37 +36,17 @@
       </div>
       
       <div class="container">
-        <form action="/analyse" method="post"> {% csrf_token %}
-           
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1"><h3>Enter Your Text Here:</h3></label>
-              <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="10"></textarea>
+        <form action="" method="post"> {% csrf_token %}
+            <div class="mb-3 mt-4">
+              <label for="id_full_name" class="form-label">Your Name</label>
+              <input type="full_name" class="form-control" id="id_full_name" name="full_name">
             </div>
-        
-        
-        <div class="custom-control custom-switch">
-        <input type="checkbox" name="removepunc" class="custom-control-input" id="customSwitch1">
-        <label class="custom-control-label" for="customSwitch1">Remove Punchuatition</label>
-        </div>
-         <div class="custom-control custom-switch">
-        <input type="checkbox" name="fullcaps" class="custom-control-input" id="customSwitch2">
-        <label class="custom-control-label" for="customSwitch2">UPERR CASE</label>
-        </div>
-        <div class="custom-control custom-switch">
-            <input type="checkbox" name="newlineremover" class="custom-control-input" id="customSwitch3">
-            <label class="custom-control-label" for="customSwitch3">NewLine Remover</label>
-        </div>
-        <div class="custom-control custom-switch">
-                <input type="checkbox" name="extraspaceremover" class="custom-control-input" id="customSwitch4">
-                <label class="custom-control-label" for="customSwitch4">Space Remover</label>
-        </div>
-        <div class="custom-control custom-switch">
-            <input type="checkbox" name="allinone" class="custom-control-input" id="customSwitch5">
-            <label class="custom-control-label" for="customSwitch5">Everything in Once</label>
-        </div>
-
-        <button type="submit" class="btn btn-outline-success mt-3">Analyse Text</button>
-    </form>
+            <div class="mb-3">
+                <label for="id_email_address" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="id_email_address" name="email">
+            </div>
+            <button type="submit" class="btn btn-outline-success mt-3">Submit</button>
+        </form>
     </div>
     
 
